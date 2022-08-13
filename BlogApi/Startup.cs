@@ -1,4 +1,6 @@
 using BlogApi.Src.Contextos;
+using BlogApi.Src.Repositorios;
+using BlogAPI.Src.Repositorios.Implentacoes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +30,12 @@ namespace BlogApi
         {
             // Configuração de Banco de dados
             services.AddDbContext<BlogPessoalContexto>(opt => opt.UseSqlServer(Configuration["ConnectionStringsDev:DefaultConnection"]));
+
+            //Um atalho que indica que IUsuario sempre irá trazer UsuarioRepositorio
+            services.AddScoped<IUsuario, UsuarioRepositorio>();
+
             // Controladores
+            services.AddCors();//irá facilitar o uso em navegadores e ligação com o frontend
             services.AddControllers();
 
         }

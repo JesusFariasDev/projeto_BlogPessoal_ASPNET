@@ -5,13 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//implementação está apenas criando os métodos do CRUD
 namespace BlogApi.Src.Repositorios.Implementacoes
 {
     public class TemaRepositorio : ITema
     {
         #region Atributos
-
+        //faz com que o contexto seja apenas lido e não possa ser alterado
         private readonly BlogPessoalContexto _contexto;
 
         #endregion
